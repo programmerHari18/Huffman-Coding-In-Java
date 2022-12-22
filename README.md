@@ -6,8 +6,6 @@ This repository was created to share my project in "Data Structures and Algorith
 What I did in the project are:
 
 * Implemented Huffman Coding in Java
-* Implemented function to automatically generate .dot file for Graphviz software to visualize the Huffman Tree
-* Tested the code with Unix's words file (/usr/share/dict/words)
 * Get the result of data compression rate
 
 
@@ -16,12 +14,7 @@ What I did in the project are:
 * HashMap
 * PriorityQueue (Min Heap)
 * Nested Class
-* Recursion
 
-
-## Requirements
-Graphviz software is required to visualize the Huffman Tree.  
-Please download it on [here](http://www.graphviz.org)
 
 
 ## How to test
@@ -30,10 +23,12 @@ Please download it on [here](http://www.graphviz.org)
 
 Create a text file named "original.txt" under /files with any contents.
 In this demo, I used Unix's words file which contains 235,886 dictionary words(2,493,109 characters in total).
+For obtaining results I have created a file named "Output.txt" to check whether the dat before encoded is same or not
+If both are same then only the contents after decoding the encoded file will get into the output file
+The output file should be in the same folder named /file where we included original.txt
 
 ```
-$ cd <PATH TO THE PROJECT DIRECTORY>/files
-$ cat /usr/share/dict/words > original.txt
+
 ```
 
 
@@ -160,6 +155,7 @@ z: 01101001
 
 * Encoding the text... DONE
 * Decoding the encoded text... DONE
+Added files successfully
 
 ========== RESULT ==========
 Original string cost = 17451763 bits
@@ -171,26 +167,9 @@ Encoded  string cost = 10872876 bits
 
 ```
 
-> The program will automatically create "test.dot" for visualizing the tree.
 
 
 
-#### 3. Visualize the tree with Graphviz
-
-Run below command and it will create test.pdf which visualized the Huffman Tree built for the test
-
-```
-$ dot -Tpdf test.dot -o test.pdf
-```
-
-It will create a pdf file like below.
-
-![Huffman Tree](files/test.jpg)   
-
-Each circle represents a tree node with below properties.
-* Unique ID of a node
-* Weight of a node
-* Character (leaf nodes only)
 
 
 
