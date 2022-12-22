@@ -1,12 +1,22 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Map;
 
 public class Test{
+	public static void writeFile(String out,String dotfilename){
+		try{
+			FileWriter fw = new FileWriter(dotfilename);
+			fw.write(out);
+			fw.close();
+			System.out.println("Added into file Successfully");
+
+		}catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
 	public static void testHuffman(String orgStr, boolean show, String dotfilename){
-		System.out.print("* Builiding Huffman Tree and Code Tables...");
+		System.out.print("* Building Huffman Tree and Code Tables...");
 	    Huffman h = new Huffman(orgStr,show,dotfilename);
 	    System.out.println(" DONE");
 	    
@@ -47,6 +57,7 @@ public class Test{
 	    System.out.println("Encoded  string cost = " + (int)el + " bits") ;
 	    double r = ((el - sl)/sl) * 100 ;
 	    System.out.println("% reduction = " + (-r)) ;
+		writeFile(d,dotfilename);
 	}
 	
 	public static String readFile(String fname){
@@ -55,12 +66,12 @@ public class Test{
 		try (BufferedReader in = new BufferedReader(new FileReader(filename))){
 			String line = in.readLine();
 			while (line != null){
-				sb.append(line + "\n");
+				sb.append(line).append("\n");
 				line = in.readLine();
 			}
 		}
 		catch (IOException e){
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		return sb.toString();
 	}
@@ -73,8 +84,8 @@ public class Test{
   
   public static void testbed(){
 	  boolean show = true ;
-	  String orgFile = "files/original.txt";
-	  String dotFile = "files/test.dot";
+	  String orgFile = "C:\\Users\\Harihara\\Desktop\\My-Projects\\Huffman-Coding-In-Java\\files\\original.txt";
+	  String dotFile = "C:\\Users\\Harihara\\Desktop\\My-Projects\\Huffman-Coding-In-Java\\files\\output.txt";
 	  
 	  System.out.print("* Loading the file...");
 	  String orgString = readFile(orgFile);
